@@ -13,7 +13,6 @@ export const TagStyle = styled.span`
   background-color: ${colors.pink};
   font-weight: bold;
   padding: 4px 8px;
-  border-radius: 8px;
   display: inline-block;
   margin-right: 8px;
 `

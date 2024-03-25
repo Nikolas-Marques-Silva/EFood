@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const colors = {
   lightPink: '#ffebd9',
@@ -25,6 +25,18 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
   }
+`
+
+export const Container = styled.div`
+  background-color: ${colors.lightPink};
+  width: 100%;
+`
+
+export const Logo = styled.img`
+  margin: 0 auto;
+  display: block;
+  padding-top: 64px;
+  padding-bottom: 64px;
 `
 
 export default GlobalStyle

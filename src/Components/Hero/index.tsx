@@ -1,5 +1,6 @@
-import { Container, Logo, Title } from './styles'
+import { Title } from './styles'
 import logo from '../../assets/images/logo.png'
+import { Container, Logo } from '../../styles'
 
 const Hero = () => {
   return (
