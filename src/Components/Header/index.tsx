@@ -1,15 +1,17 @@
 import { Container, Logo } from '../../styles'
 import LogoImg from '../../assets/images/logo.png'
-import { HeaderText, HeroWrapper } from './styles'
+import * as S from './styles'
 
 const Header = () => {
   return (
     <Container>
-      <HeroWrapper>
-        <HeaderText>Restaurante</HeaderText>
-        <Logo src={LogoImg} alt="efood logo" />
-        <HeaderText>{0} produto(s) no carrinho</HeaderText>
-      </HeroWrapper>
+      <div className="container">
+        <S.HeroWrapper>
+          <S.HeaderText>Restaurante</S.HeaderText>
+          <Logo src={LogoImg} alt="efood logo" />
+          <S.HeaderText>{0} produto(s) no carrinho</S.HeaderText>
+        </S.HeroWrapper>
+      </div>
     </Container>
   )
 }

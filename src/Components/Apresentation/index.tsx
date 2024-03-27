@@ -1,8 +1,4 @@
-import {
-  ApresentationText,
-  ApresentationTitle,
-  ApresentationWrapper
-} from './styles'
+import * as S from './styles'
 
 export type ApresentationProps = {
   image: string
@@ -12,10 +8,12 @@ export type ApresentationProps = {
 
 const Apresentation = ({ image, title, description }: ApresentationProps) => {
   return (
-    <ApresentationWrapper title={title} description={description} image={image}>
-      <ApresentationText>{description}</ApresentationText>
-      <ApresentationTitle>{title}</ApresentationTitle>
-    </ApresentationWrapper>
+    <S.Wrapper title={title} description={description} image={image}>
+      <div className="container">
+        <S.Text>{description}</S.Text>
+        <S.Title>{title}</S.Title>
+      </div>
+    </S.Wrapper>
   )
 }
 

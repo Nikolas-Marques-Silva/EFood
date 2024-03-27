@@ -1,4 +1,4 @@
-import { SocialLink, SocialLinksList, Copyright } from './styles'
+import * as S from './styles'
 import { Container, Logo } from '../../styles'
 import logo from '../../assets/images/logo.png'
 import instagram from '../../assets/images/instagram.png'
@@ -9,22 +9,22 @@ const Footer = () => {
   return (
     <Container>
       <Logo src={logo} alt="efood logo" />
-      <SocialLinksList>
-        <SocialLink>
+      <S.SocialLinksList>
+        <S.SocialLink>
           <img src={instagram} alt="Siga-nos no Instagram" />
-        </SocialLink>
-        <SocialLink>
+        </S.SocialLink>
+        <S.SocialLink>
           <img src={facebook} alt="Siga-nos no Facebook" />
-        </SocialLink>
-        <SocialLink>
+        </S.SocialLink>
+        <S.SocialLink>
           <img src={twitter} alt="Siga-nos no Twitter" />
-        </SocialLink>
-      </SocialLinksList>
-      <Copyright>
+        </S.SocialLink>
+      </S.SocialLinksList>
+      <S.Copyright>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
         estabelecimento contratado.
-      </Copyright>
+      </S.Copyright>
     </Container>
   )
 }

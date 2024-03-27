@@ -87,7 +87,7 @@ export const Button = styled(Link)<
   display: block;`};
 
   padding: 8px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   margin: 8px 0;
   text-align: center;

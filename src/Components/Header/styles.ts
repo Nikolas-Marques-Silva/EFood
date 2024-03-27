@@ -12,5 +12,4 @@ export const HeroWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 172px;
 `

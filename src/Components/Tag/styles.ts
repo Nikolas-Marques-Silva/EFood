@@ -8,7 +8,7 @@ export const TagContainer = styled.div`
 `
 
 export const TagStyle = styled.span`
-  font-size: 10px;
+  font-size: 12px;
   color: ${colors.lightPink};
   background-color: ${colors.pink};
   font-weight: bold;

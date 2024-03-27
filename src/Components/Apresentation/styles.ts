@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { ApresentationProps } from '.'
 
-export const ApresentationWrapper = styled.div<ApresentationProps>`
+export const Wrapper = styled.div<ApresentationProps>`
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,10 +21,10 @@ export const ApresentationWrapper = styled.div<ApresentationProps>`
   }
 `
 
-export const ApresentationText = styled.p`
+export const Text = styled.p`
   position: absolute;
   top: 24px;
-  left: 170px;
+  left: 0;
   font-size: 32px;
   font-weight: 400;
   line-height: 37.5px;
@@ -32,10 +32,10 @@ export const ApresentationText = styled.p`
   z-index: 2;
 `
 
-export const ApresentationTitle = styled.h1`
+export const Title = styled.h1`
   position: absolute;
-  bottom: 32px;
-  left: 170px;
+  top: 180px;
+  left: 0;
   font-size: 32px;
   font-weight: 700;
   line-height: 37.5px;

@@ -1,13 +1,6 @@
 import Tag from '../Tag'
 import { TagContainer } from '../Tag/styles'
-import {
-  Container,
-  Description,
-  Image,
-  RatingContainer,
-  Title,
-  Button
-} from './styles'
+import * as S from './styles'
 import estrela from '../../assets/images/estrela.png'
 
 export type Props = {
@@ -34,26 +27,26 @@ const Product = ({
   buttonType
 }: Props) => {
   return (
-    <Container type={type} id={id}>
-      <Image src={image} alt={title} />
-      <RatingContainer>
-        <Title type={type}>{title}</Title>
+    <S.Container type={type} id={id}>
+      <S.Image src={image} alt={title} />
+      <S.RatingContainer>
+        <S.Title type={type}>{title}</S.Title>
         {stars !== undefined && (
           <div>
             <p>{stars}</p>
             <img src={estrela} alt="" />{' '}
           </div>
         )}
-      </RatingContainer>
+      </S.RatingContainer>
       <TagContainer>
         {infos !== undefined &&
           infos.map((info, index) => <Tag key={index}>{info}</Tag>)}
       </TagContainer>
-      <Description type={type}>{description}</Description>
-      <Button buttonType={buttonType} to={to ?? ''}>
+      <S.Description type={type}>{description}</S.Description>
+      <S.Button buttonType={buttonType} to={to ?? ''}>
         Saiba mais
-      </Button>
-    </Container>
+      </S.Button>
+    </S.Container>
   )
 }
 
