@@ -9,7 +9,6 @@ export const Container = styled.div<
 >`
   align-items: center;
   width: 472px;
-  height: 400px;
   position: relative;
   border: 2px solid ${colors.pink};
 
@@ -76,9 +75,7 @@ export const Button = styled(Link)<
     props.buttonType === 'primary' &&
     `background-color: ${colors.pink};
   color: ${colors.lightPink};
-  position: absolute;
-  bottom: 8px;
-  left: 8px;`};
+  display: inline-block;`};
 
   ${(props) =>
     props.buttonType === 'secondary' &&
@@ -89,6 +86,6 @@ export const Button = styled(Link)<
   padding: 8px;
   font-size: 14px;
   font-weight: 700;
-  margin: 8px 0;
+  margin: 8px;
   text-align: center;
 `

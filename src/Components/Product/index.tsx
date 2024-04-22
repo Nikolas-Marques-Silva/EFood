@@ -2,48 +2,42 @@ import Tag from '../Tag'
 import { TagContainer } from '../Tag/styles'
 import * as S from './styles'
 import estrela from '../../assets/images/estrela.png'
+import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  title: string
-  description: string
-  image: string
-  stars?: number
-  infos?: string[]
-  id: number
-  to?: string
   type: 'product' | 'restaurant'
   buttonType: 'primary' | 'secondary'
+  product: ProductProps
 }
 
-const Product = ({
-  title,
-  description,
-  image,
-  stars,
-  infos,
-  id,
-  to,
-  type,
-  buttonType
-}: Props) => {
+const Product = ({ product, type, buttonType }: Props) => {
   return (
-    <S.Container type={type} id={id}>
-      <S.Image src={image} alt={title} />
+    <S.Container type={type} product={product}>
+      <S.Image src={product.capa} alt={product.titulo} />
       <S.RatingContainer>
-        <S.Title type={type}>{title}</S.Title>
-        {stars !== undefined && (
+        <S.Title product={product} type={type}>
+          {product.titulo}
+        </S.Title>
+        {product.avaliacao !== undefined && (
           <div>
-            <p>{stars}</p>
+            <p>{product.avaliacao}</p>
             <img src={estrela} alt="" />{' '}
           </div>
         )}
       </S.RatingContainer>
       <TagContainer>
-        {infos !== undefined &&
-          infos.map((info, index) => <Tag key={index}>{info}</Tag>)}
+        <Tag>{type}</Tag>
+        {product.destacado && <Tag>Destaque</Tag>}
       </TagContainer>
-      <S.Description type={type}>{description}</S.Description>
-      <S.Button buttonType={buttonType} to={to ?? ''}>
+      <S.Description product={product} type={type}>
+        {product.descricao}
+      </S.Description>
+      <S.Button
+        type={type}
+        product={product}
+        buttonType={buttonType}
+        to={`/product/${product.id}`}
+      >
         Saiba mais
       </S.Button>
     </S.Container>
