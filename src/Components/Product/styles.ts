@@ -4,32 +4,27 @@ import { colors } from '../../styles'
 import { Props } from '.'
 import { Link } from 'react-router-dom'
 
-export const Container = styled.div<
-  Omit<Props, 'image' | 'title' | 'description' | 'buttonType'>
->`
+export const Container = styled.div<Omit<Props, 'buttonType' | 'product'>>`
   align-items: center;
   width: 472px;
   position: relative;
   border: 2px solid ${colors.pink};
 
   ${(props) =>
-    props.type === 'product' &&
+    props.type === 'products' &&
     `background-color: ${colors.pink};
   width: 320px;
-  height: 100%;
   border: 8px solid ${colors.pink};`};
 `
 
-export const Title = styled.h3<
-  Omit<Props, 'image' | 'description' | 'id' | 'title' | 'buttonType'>
->`
+export const Title = styled.h3<Omit<Props, 'buttonType' | 'product'>>`
   font-size: 18px;
   font-weight: 700;
   margin: 0;
   color: ${colors.pink};
   line-height: 22px;
   display: inline;
-  ${(props) => props.type === 'product' && `color: ${colors.lightPink}`};
+  ${(props) => props.type === 'products' && `color: ${colors.lightPink}`};
 `
 
 export const Image = styled.img`
@@ -38,14 +33,13 @@ export const Image = styled.img`
   height: 200px;
 `
 
-export const Description = styled.p<
-  Omit<Props, 'image' | 'title' | 'description' | 'id' | 'buttonType'>
->`
+export const Description = styled.p<Omit<Props, 'buttonType' | 'product'>>`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   padding: 16px 8px 0 8px;
-  ${(props) => props.type === 'product' && `color: ${colors.lightPink}`};
+  color: ${colors.pink};
+  ${(props) => props.type === 'products' && `color: ${colors.lightPink}`};
   margin: 0;
 `
 
@@ -58,6 +52,7 @@ export const RatingContainer = styled.div`
   div {
     margin: 0;
     padding: 0;
+
     p {
       font-size: 16px;
       font-weight: 700;
@@ -68,9 +63,7 @@ export const RatingContainer = styled.div`
     }
   }
 `
-export const Button = styled(Link)<
-  Omit<Props, 'image' | 'title' | 'description' | 'id' | 'type'>
->`
+export const Button = styled(Link)<Omit<Props, 'type' | 'product'>>`
   ${(props) =>
     props.buttonType === 'primary' &&
     `background-color: ${colors.pink};

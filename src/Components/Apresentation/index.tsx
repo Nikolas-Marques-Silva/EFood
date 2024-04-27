@@ -1,9 +1,9 @@
 import * as S from './styles'
 
 export type ApresentationProps = {
-  image: string
-  title: string
-  description: string
+  image: string | undefined
+  title: string | undefined
+  description: string | undefined
 }
 
 const Apresentation = ({ image, title, description }: ApresentationProps) => {

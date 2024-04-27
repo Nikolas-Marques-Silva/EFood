@@ -5,39 +5,41 @@ import estrela from '../../assets/images/estrela.png'
 import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  type: 'product' | 'restaurant'
+  type: 'products' | 'restaurants'
   buttonType: 'primary' | 'secondary'
   product: ProductProps
 }
 
 const Product = ({ product, type, buttonType }: Props) => {
   return (
-    <S.Container type={type} product={product}>
-      <S.Image src={product.capa} alt={product.titulo} />
+    <S.Container type={type}>
+      <S.Image
+        src={type === 'restaurants' ? product.capa : product.cardapio.foto}
+        alt={type === 'restaurants' ? product.titulo : product.cardapio.nome}
+      />
       <S.RatingContainer>
-        <S.Title product={product} type={type}>
-          {product.titulo}
+        <S.Title type={type}>
+          {type === 'restaurants' ? product.titulo : product.cardapio.nome}
         </S.Title>
-        {product.avaliacao !== undefined && (
+        {type === 'restaurants' && (
           <div>
             <p>{product.avaliacao}</p>
             <img src={estrela} alt="" />{' '}
           </div>
         )}
       </S.RatingContainer>
-      <TagContainer>
-        <Tag>{type}</Tag>
-        {product.destacado && <Tag>Destaque</Tag>}
-      </TagContainer>
-      <S.Description product={product} type={type}>
-        {product.descricao}
+      {type === 'restaurants' && (
+        <TagContainer>
+          <Tag>{product.tipo}</Tag>
+          {product.destacado && <Tag>Destaque</Tag>}
+        </TagContainer>
+      )}
+      <S.Description type={type}>
+        {type === 'restaurants'
+          ? product.descricao
+          : product.cardapio.descricao}
       </S.Description>
-      <S.Button
-        type={type}
-        product={product}
-        buttonType={buttonType}
-        to={`/product/${product.id}`}
-      >
+      <S.Button buttonType={buttonType} to={`/restaurantes/${product.id}`}>
         Saiba mais
       </S.Button>
     </S.Container>

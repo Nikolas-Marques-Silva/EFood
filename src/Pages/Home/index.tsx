@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
 import Footer from '../../Components/Footer'
 import Hero from '../../Components/Hero'
 import ProductsList from '../../Components/ProductsList'
+import { useFetch } from '../../Hooks/Produtos'
 
 export type ProductProps = {
   id: number
@@ -11,31 +11,26 @@ export type ProductProps = {
   tipo: string
   avaliacao: number
   capa: string
-  cardapio: {
-    foto: string
-    preco: number
-    id: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
+  cardapio: Menu[]
+}
+
+type Menu = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
 }
 
 const Home = () => {
-  const [products, setProducts] = useState<ProductProps[]>()
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((response) => response.json())
-      .then((response) => setProducts(response))
-  })
-
-  if (!products) return <h3>Carregando</h3>
-
+  const { data: products } = useFetch<ProductProps[]>(
+    'https://fake-api-tau.vercel.app/api/efood/restaurantes'
+  )
   return (
     <>
       <Hero />
-      <ProductsList products={products} type="restaurants" cols={2} />
+      <ProductsList buttonType="primary" type="restaurants" cols={2} />
       <Footer />
     </>
   )
