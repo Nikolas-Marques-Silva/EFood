@@ -9,13 +9,16 @@ const Restaurants = () => {
   const { data: products } = useFetch<ProductProps>(
     'https://fake-api-tau.vercel.app/api/efood/restaurantes'
   )
+
+  if (!products) return <h3>Carregando...</h3>
+
   return (
     <>
       <Header />
       <Apresentation
-        title={products?.cardapio.nome}
-        description={products?.cardapio.descricao}
-        image={products?.cardapio.foto}
+        title={products.cardapio.nome}
+        description={products.cardapio.descricao}
+        image={products.cardapio.foto}
       />
       <ProductsList buttonType="secondary" type="products" cols={3} />
       <Footer />

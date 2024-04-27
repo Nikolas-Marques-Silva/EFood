@@ -2,12 +2,27 @@ import Tag from '../Tag'
 import { TagContainer } from '../Tag/styles'
 import * as S from './styles'
 import estrela from '../../assets/images/estrela.png'
-import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
   type: 'products' | 'restaurants'
   buttonType: 'primary' | 'secondary'
-  product: ProductProps
+  product: {
+    id: number
+    titulo: string
+    descricao: string
+    destacado: boolean
+    tipo: string
+    avaliacao: number
+    capa: string
+    cardapio: {
+      foto: string
+      preco: number
+      id: number
+      nome: string
+      descricao: string
+      porcao: string
+    }
+  }
 }
 
 const Product = ({ product, type, buttonType }: Props) => {

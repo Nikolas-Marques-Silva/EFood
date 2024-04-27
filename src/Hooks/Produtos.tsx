@@ -9,5 +9,7 @@ export function useFetch<T = undefined>(url: string) {
       .then((response) => setData(response))
   }, [url])
 
+  if (!data) return { data: [] }
+
   return { data }
 }

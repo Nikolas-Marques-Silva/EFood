@@ -11,16 +11,14 @@ export type ProductProps = {
   tipo: string
   avaliacao: number
   capa: string
-  cardapio: Menu[]
-}
-
-type Menu = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
+  cardapio: {
+    foto: string
+    preco: number
+    id: number
+    nome: string
+    descricao: string
+    porcao: string
+  }
 }
 
 const Home = () => {
