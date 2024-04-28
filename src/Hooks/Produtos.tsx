@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
 
-export function useFetch<T = undefined>(url: string) {
-  const [data, setData] = useState<T | undefined>()
+export function useFetch<T = unknown>(url: string) {
+  const [data, setData] = useState<T | undefined>(undefined)
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((response) => setData(response))
-  }, [url])
+    const fetchData = async () => {
+      const response = await fetch(url)
+      const json = await response.json()
+      setData(json)
+    }
 
-  if (!data) return { data: [] }
+    fetchData().then((r) => r)
+  }, [url])
 
   return { data }
 }

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
-import { ApresentationProps } from '.'
 
-export const Wrapper = styled.div<ApresentationProps>`
-  background-image: url(${({ image }) => image});
+export const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

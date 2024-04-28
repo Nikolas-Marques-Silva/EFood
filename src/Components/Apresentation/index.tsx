@@ -1,19 +1,25 @@
 import * as S from './styles'
+import { ProductProps } from '../../Pages/Home'
 
-export type ApresentationProps = {
-  image: string | undefined
-  title: string | undefined
-  description: string | undefined
+export type Props = {
+  products?: ProductProps[]
 }
 
-const Apresentation = ({ image, title, description }: ApresentationProps) => {
+const Apresentation = ({ products }: Props) => {
   return (
-    <S.Wrapper title={title} description={description} image={image}>
-      <div className="container">
-        <S.Text>{description}</S.Text>
-        <S.Title>{title}</S.Title>
-      </div>
-    </S.Wrapper>
+    <div className="container">
+      {Array.isArray(products) &&
+        products.map((item) => (
+          <li key={item.id}>
+            <S.Wrapper
+              style={{ backgroundImage: `url(${item.cardapio.foto})` }}
+            >
+              <S.Text>{item.cardapio.descricao}</S.Text>
+              <S.Title>{item.cardapio.nome}</S.Title>
+            </S.Wrapper>
+          </li>
+        ))}
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import { colors } from '../../styles'
 import { Props } from '.'
 import { Link } from 'react-router-dom'
 
-export const Container = styled.div<Omit<Props, 'buttonType' | 'product'>>`
+export const Container = styled.div<Omit<Props, 'buttontype' | 'product'>>`
   align-items: center;
   width: 472px;
   position: relative;
@@ -17,7 +17,7 @@ export const Container = styled.div<Omit<Props, 'buttonType' | 'product'>>`
   border: 8px solid ${colors.pink};`};
 `
 
-export const Title = styled.h3<Omit<Props, 'buttonType' | 'product'>>`
+export const Title = styled.h3<Omit<Props, 'buttontype' | 'product'>>`
   font-size: 18px;
   font-weight: 700;
   margin: 0;
@@ -33,7 +33,7 @@ export const Image = styled.img`
   height: 200px;
 `
 
-export const Description = styled.p<Omit<Props, 'buttonType' | 'product'>>`
+export const Description = styled.p<Omit<Props, 'buttontype' | 'product'>>`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
@@ -64,14 +64,12 @@ export const RatingContainer = styled.div`
   }
 `
 export const Button = styled(Link)<Omit<Props, 'type' | 'product'>>`
-  ${(props) =>
-    props.buttonType === 'primary' &&
-    `background-color: ${colors.pink};
+  background-color: ${colors.pink};
   color: ${colors.lightPink};
-  display: inline-block;`};
+  display: inline-block;
 
   ${(props) =>
-    props.buttonType === 'secondary' &&
+    props.buttontype === 'secondary' &&
     `background-color: ${colors.lightPink};
   color: ${colors.pink};
   display: block;`};
