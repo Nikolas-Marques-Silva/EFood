@@ -1,8 +1,9 @@
 import * as S from './styles'
+import { getDescription } from '../../Pages/Restaurants'
 import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps[]
+  products?: ProductProps['cardapio'][]
 }
 
 const Apresentation = ({ products }: Props) => {
@@ -11,12 +12,9 @@ const Apresentation = ({ products }: Props) => {
       {Array.isArray(products) &&
         products.map((item) => (
           <li key={item.id}>
-            <S.Wrapper
-              style={{ backgroundImage: `url(${item.cardapio.foto})` }}
-            >
-              <S.Text>{item.cardapio.descricao}</S.Text>
-              <S.Title>{item.cardapio.nome}</S.Title>
-            </S.Wrapper>
+            <S.Wrapper style={{ backgroundImage: `url(${item.foto})` }} />
+            <S.Title>{item.nome}</S.Title>
+            <S.Text>{getDescription(item.descricao)}</S.Text>
           </li>
         ))}
     </div>

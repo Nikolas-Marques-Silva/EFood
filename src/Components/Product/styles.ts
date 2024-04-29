@@ -1,30 +1,22 @@
 import styled from 'styled-components'
 
 import { colors } from '../../styles'
-import { Props } from '.'
 import { Link } from 'react-router-dom'
 
-export const Container = styled.div<Omit<Props, 'buttontype' | 'product'>>`
+export const Container = styled.div`
   align-items: center;
   width: 472px;
   position: relative;
   border: 2px solid ${colors.pink};
-
-  ${(props) =>
-    props.type === 'products' &&
-    `background-color: ${colors.pink};
-  width: 320px;
-  border: 8px solid ${colors.pink};`};
 `
 
-export const Title = styled.h3<Omit<Props, 'buttontype' | 'product'>>`
+export const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
   margin: 0;
   color: ${colors.pink};
   line-height: 22px;
   display: inline;
-  ${(props) => props.type === 'products' && `color: ${colors.lightPink}`};
 `
 
 export const Image = styled.img`
@@ -33,13 +25,12 @@ export const Image = styled.img`
   height: 200px;
 `
 
-export const Description = styled.p<Omit<Props, 'buttontype' | 'product'>>`
+export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   padding: 16px 8px 0 8px;
   color: ${colors.pink};
-  ${(props) => props.type === 'products' && `color: ${colors.lightPink}`};
   margin: 0;
 `
 
@@ -63,16 +54,10 @@ export const RatingContainer = styled.div`
     }
   }
 `
-export const Button = styled(Link)<Omit<Props, 'type' | 'product'>>`
+export const Button = styled(Link)`
   background-color: ${colors.pink};
   color: ${colors.lightPink};
   display: inline-block;
-
-  ${(props) =>
-    props.buttontype === 'secondary' &&
-    `background-color: ${colors.lightPink};
-  color: ${colors.pink};
-  display: block;`};
 
   padding: 8px;
   font-size: 14px;

@@ -1,9 +1,9 @@
-import Product from '../Product'
 import { Container } from './styles'
+import Plates from '../Plates'
 import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps[]
+  products?: ProductProps['cardapio'][]
 }
 
 const ProductsList = ({ products }: Props) => {
@@ -13,7 +13,7 @@ const ProductsList = ({ products }: Props) => {
         {Array.isArray(products) &&
           products.map((item) => (
             <li key={item.id}>
-              <Product product={item} />
+              <Plates products={item} />
             </li>
           ))}
       </Container>

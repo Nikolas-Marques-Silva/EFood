@@ -28,12 +28,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <ProductsList
-        products={products}
-        buttontype="primary"
-        type="restaurants"
-        cols={2}
-      />
+      <ProductsList products={products} />
       <Footer />
     </>
   )
