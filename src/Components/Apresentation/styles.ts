@@ -1,4 +1,10 @@
 import styled from 'styled-components'
+import { colors } from '../../styles'
+
+export const Container = styled.div`
+  background-color: ${colors.lightPink};
+  width: 100%;
+`
 
 export const Wrapper = styled.div`
   background-repeat: no-repeat;

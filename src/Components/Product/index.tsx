@@ -24,7 +24,7 @@ const Product = ({ product }: Props) => {
         <Tag>{product.tipo}</Tag>
         {product.destacado && <Tag>Destaque</Tag>}
       </TagContainer>
-      <S.Description>{getDescription(product.descricao)}</S.Description>
+      <S.Description>{getDescription(product.descricao, 184)}</S.Description>
       <S.Button to={`/restaurantes/${product.id}`}>Saiba mais</S.Button>
     </S.Container>
   )

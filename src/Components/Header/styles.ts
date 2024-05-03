@@ -9,7 +9,9 @@ export const HeaderText = styled.p`
 `
 
 export const HeroWrapper = styled.header`
+  width: 1024px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 `

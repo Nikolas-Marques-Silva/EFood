@@ -3,21 +3,19 @@ import { getDescription } from '../../Pages/Restaurants'
 import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps['cardapio'][]
+  products?: ProductProps
 }
 
 const Apresentation = ({ products }: Props) => {
   return (
-    <div className="container">
-      {Array.isArray(products) &&
-        products.map((item) => (
-          <li key={item.id}>
-            <S.Wrapper style={{ backgroundImage: `url(${item.foto})` }} />
-            <S.Title>{item.nome}</S.Title>
-            <S.Text>{getDescription(item.descricao)}</S.Text>
-          </li>
-        ))}
-    </div>
+    <S.Container>
+      <S.Wrapper style={{ backgroundImage: `url(${products?.capa})` }}>
+        <div className="container">
+          <S.Title>{products?.titulo}</S.Title>
+          <S.Text>{getDescription(products?.descricao || '', 69)}</S.Text>
+        </div>
+      </S.Wrapper>
+    </S.Container>
   )
 }
 

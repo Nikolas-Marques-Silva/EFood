@@ -3,7 +3,7 @@ import Plates from '../Plates'
 import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps['cardapio'][]
+  products?: ProductProps['cardapio']
 }
 
 const ProductsList = ({ products }: Props) => {
