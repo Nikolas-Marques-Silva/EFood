@@ -1,9 +1,9 @@
 import Footer from '../../Components/Footer'
 import Hero from '../../Components/Hero'
 import ProductsList from '../../Components/ProductsList'
-import { useFetch } from '../../Hooks/Produtos'
+import { useGetRestaurantsQuery } from '../../services/api'
 
-export type ProductProps = {
+export type Plate = {
   id: number
   titulo: string
   descricao: string
@@ -22,16 +22,18 @@ export type ProductProps = {
 }
 
 const Home = () => {
-  const { data: products } = useFetch<ProductProps[]>(
-    'https://fake-api-tau.vercel.app/api/efood/restaurantes'
-  )
-  return (
-    <>
-      <Hero />
-      <ProductsList products={products} />
-      <Footer />
-    </>
-  )
+  const { data: products } = useGetRestaurantsQuery()
+  if (products) {
+    return (
+      <>
+        <Hero />
+        <ProductsList products={products} />
+        <Footer />
+      </>
+    )
+  }
+
+  return <h4>Carregando...</h4>
 }
 
 export default Home

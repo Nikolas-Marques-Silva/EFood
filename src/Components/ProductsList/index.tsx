@@ -1,21 +1,29 @@
 import Product from '../Product'
 import { Container } from './styles'
-import { ProductProps } from '../../Pages/Home'
+import { Plate } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps[]
+  products: Plate[]
 }
 
 const ProductsList = ({ products }: Props) => {
   return (
     <div className="container">
       <Container>
-        {Array.isArray(products) &&
-          products.map((item) => (
-            <li key={item.id}>
-              <Product product={item} />
-            </li>
-          ))}
+        {products.map((item) => (
+          <li key={item.id}>
+            <Product
+              title={item.titulo}
+              description={item.descricao}
+              image={item.capa}
+              rating={item.avaliacao}
+              type={item.tipo}
+              featured={item.destacado}
+              id={item.id}
+            />
+          </li>
+        ))}
+        s
       </Container>
     </div>
   )

@@ -2,30 +2,43 @@ import Tag from '../Tag'
 import { TagContainer } from '../Tag/styles'
 import * as S from './styles'
 import estrela from '../../assets/images/estrela.png'
-import { ProductProps } from '../../Pages/Home'
 import { getDescription } from '../../Pages/Restaurants'
 
 export type Props = {
-  product: ProductProps
+  title: string
+  image: string
+  rating: number
+  description: string
+  type: string
+  featured: boolean
+  id: number
 }
 
-const Product = ({ product }: Props) => {
+const Product = ({
+  title,
+  image,
+  rating,
+  description,
+  type,
+  featured,
+  id
+}: Props) => {
   return (
     <S.Container>
-      <S.Image src={product.capa} alt={product.titulo} />
+      <S.Image src={image} alt={title} />
       <S.RatingContainer>
-        <S.Title>{product.titulo}</S.Title>
+        <S.Title>{title}</S.Title>
         <div>
-          <p>{product.avaliacao}</p>
+          <p>{rating}</p>
           <img src={estrela} alt="" />{' '}
         </div>
       </S.RatingContainer>
       <TagContainer>
-        <Tag>{product.tipo}</Tag>
-        {product.destacado && <Tag>Destaque</Tag>}
+        <Tag>{type}</Tag>
+        {featured && <Tag>Destaque</Tag>}
       </TagContainer>
-      <S.Description>{getDescription(product.descricao, 184)}</S.Description>
-      <S.Button to={`/restaurantes/${product.id}`}>Saiba mais</S.Button>
+      <S.Description>{getDescription(description, 184)}</S.Description>
+      <S.Button to={`/restaurantes/${id}`}>Saiba mais</S.Button>
     </S.Container>
   )
 }

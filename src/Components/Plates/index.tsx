@@ -1,14 +1,17 @@
 import * as S from './styles'
 import { getDescription } from '../../Pages/Restaurants'
-import { ProductProps } from '../../Pages/Home'
 import close from '../../assets/images/close.png'
 import { useState } from 'react'
 
 type Props = {
-  products: ProductProps['cardapio']
+  title: string
+  image: string
+  description: string
+  portion: string
+  price: number
 }
 
-const Plates = ({ products }: Props) => {
+const Plates = ({ title, image, description, portion, price }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   function getPlatePrice(price: number) {
@@ -21,9 +24,9 @@ const Plates = ({ products }: Props) => {
   return (
     <>
       <S.Container>
-        <S.Image src={products.foto} alt={products.nome} />
-        <S.Title>{products.nome}</S.Title>
-        <S.Description>{getDescription(products.descricao, 122)}</S.Description>
+        <S.Image src={image} alt={title} />
+        <S.Title>{title}</S.Title>
+        <S.Description>{getDescription(description, 122)}</S.Description>
         <S.Button onClick={() => setModalIsOpen(true)}>Ver mais</S.Button>
       </S.Container>
       <S.Modal className={modalIsOpen ? 'visible' : ''}>
@@ -33,13 +36,13 @@ const Plates = ({ products }: Props) => {
             src={close}
             alt="Fechar"
           />
-          <S.ModalImage src={products.foto} alt={products.nome} />
+          <S.ModalImage src={image} alt={title} />
           <S.ModalDetails>
-            <S.ModalTitle>{products.nome}</S.ModalTitle>
-            <S.ModalDescription>{products.descricao}</S.ModalDescription>
-            <S.ModalPortion>Serve: {products.porcao}</S.ModalPortion>
+            <S.ModalTitle>{title}</S.ModalTitle>
+            <S.ModalDescription>{description}</S.ModalDescription>
+            <S.ModalPortion>Serve: {portion}</S.ModalPortion>
             <S.ModalButton>
-              Adicionar aocarrinho - {getPlatePrice(products.preco)}
+              Adicionar aocarrinho - {getPlatePrice(price)}
             </S.ModalButton>
           </S.ModalDetails>
         </S.ModalContent>

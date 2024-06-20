@@ -1,11 +1,9 @@
 import Apresentation from '../../Components/Apresentation'
 import Footer from '../../Components/Footer'
 import Header from '../../Components/Header'
-import { useFetch } from '../../Hooks/Produtos'
 import { useParams } from 'react-router-dom'
-import React from 'react'
 import PlatesList from '../../Components/PlatesList'
-import { ProductProps } from '../Home'
+import { useGetPlatesQuery } from '../../services/api'
 
 export function getDescription(descricao: string, Length: number) {
   if (descricao.length > Length) {
@@ -17,18 +15,24 @@ export function getDescription(descricao: string, Length: number) {
 const Restaurants = () => {
   const { id } = useParams()
 
-  const { data: products } = useFetch<ProductProps>(
-    `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
-  )
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { data: product } = useGetPlatesQuery(id!)
 
-  return (
-    <>
-      <Header />
-      <Apresentation products={products} />
-      <PlatesList products={products?.cardapio} />
-      <Footer />
-    </>
-  )
+  if (product) {
+    return (
+      <>
+        <Header />
+        <Apresentation
+          image={product.capa}
+          title={product.titulo}
+          type={product.tipo}
+        />
+        <PlatesList products={product.cardapio} />
+        <Footer />
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Restaurants

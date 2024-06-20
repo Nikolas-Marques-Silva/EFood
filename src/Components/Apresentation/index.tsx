@@ -1,18 +1,18 @@
 import * as S from './styles'
-import { getDescription } from '../../Pages/Restaurants'
-import { ProductProps } from '../../Pages/Home'
 
 export type Props = {
-  products?: ProductProps
+  image: string
+  title: string
+  type: string
 }
 
-const Apresentation = ({ products }: Props) => {
+const Apresentation = ({ title, type, image }: Props) => {
   return (
     <S.Container>
-      <S.Wrapper style={{ backgroundImage: `url(${products?.capa})` }}>
+      <S.Wrapper style={{ backgroundImage: `url(${image})` }}>
         <div className="container">
-          <S.Title>{products?.titulo}</S.Title>
-          <S.Text>{getDescription(products?.descricao || '', 69)}</S.Text>
+          <S.Title>{title}</S.Title>
+          <S.Text>{type}</S.Text>
         </div>
       </S.Wrapper>
     </S.Container>

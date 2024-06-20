@@ -1,8 +1,10 @@
+import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import GlobalStyle from './styles'
 
 import Home from './Pages/Home'
 import Restaurants from './Pages/Restaurants'
+import store from './store'
 
 const AppRoutes = () => {
   return (
@@ -15,10 +17,12 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <AppRoutes />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <AppRoutes />
+      </BrowserRouter>
+    </Provider>
   )
 }
 
