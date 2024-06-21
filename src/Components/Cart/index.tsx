@@ -1,11 +1,22 @@
 import { Button } from '../Plates/styles'
 import pizza from '../../assets/images/pizza.png'
 import * as S from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { closeCart } from '../../store/reducers/cart'
 
 const Cart = () => {
+  const { active } = useSelector((state: RootReducer) => state.cart)
+
+  const dispatch = useDispatch()
+
+  const close = () => {
+    dispatch(closeCart())
+  }
+
   return (
-    <S.Container>
-      <S.Overlay />
+    <S.Container className={active ? 'active' : ''}>
+      <S.Overlay onClick={close} />
       <S.Sidebar>
         <ul>
           <S.Item>

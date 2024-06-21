@@ -6,6 +6,7 @@ export const HeaderText = styled.p`
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
+  cursor: pointer;
 `
 
 export const HeroWrapper = styled.header`

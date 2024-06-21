@@ -2,6 +2,8 @@ import * as S from './styles'
 import { getDescription } from '../../Pages/Restaurants'
 import close from '../../assets/images/close.png'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../store/reducers/cart'
 
 type Props = {
   title: string
@@ -19,6 +21,12 @@ const Plates = ({ title, image, description, portion, price }: Props) => {
       style: 'currency',
       currency: 'BRL'
     }).format(price)
+  }
+
+  const dispatch = useDispatch()
+
+  const add = () => {
+    dispatch(addToCart())
   }
 
   return (
@@ -42,7 +50,7 @@ const Plates = ({ title, image, description, portion, price }: Props) => {
             <S.ModalDescription>{description}</S.ModalDescription>
             <S.ModalPortion>Serve: {portion}</S.ModalPortion>
             <S.ModalButton>
-              Adicionar aocarrinho - {getPlatePrice(price)}
+              Adicionar ao carrinho - {getPlatePrice(price)}
             </S.ModalButton>
           </S.ModalDetails>
         </S.ModalContent>

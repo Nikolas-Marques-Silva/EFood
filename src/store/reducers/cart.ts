@@ -3,10 +3,12 @@ import { Plate } from '../../Pages/Home'
 
 type State = {
   items: Plate[]
+  active: boolean
 }
 
 const initialState: State = {
-  items: []
+  items: [],
+  active: false
 }
 
 const cartSlice = createSlice({
@@ -15,10 +17,16 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<Plate>) => {
       state.items.push(action.payload)
+    },
+    openCart: (state) => {
+      state.active = true
+    },
+    closeCart: (state) => {
+      state.active = false
     }
   }
 })
 
-export const { addToCart } = cartSlice.actions
+export const { addToCart, openCart, closeCart } = cartSlice.actions
 
 export default cartSlice.reducer
