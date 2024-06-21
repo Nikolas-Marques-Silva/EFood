@@ -5,6 +5,7 @@ import GlobalStyle from './styles'
 import Home from './Pages/Home'
 import Restaurants from './Pages/Restaurants'
 import store from './store'
+import Cart from './Components/Cart'
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <AppRoutes />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )
