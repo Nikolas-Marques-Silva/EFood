@@ -1,12 +1,11 @@
 import { Button } from '../Plates/styles'
-import pizza from '../../assets/images/pizza.png'
 import * as S from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { closeCart } from '../../store/reducers/cart'
+import { closeCart, removeFromCart } from '../../store/reducers/cart'
 
 const Cart = () => {
-  const { active } = useSelector((state: RootReducer) => state.cart)
+  const { active, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -14,30 +13,39 @@ const Cart = () => {
     dispatch(closeCart())
   }
 
+  const remove = (id: number) => {
+    dispatch(removeFromCart({ id }))
+  }
+
+  const getPlatePrice = (price: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(price)
+  }
+
+  const getTotal = () => {
+    return items.reduce((acc, item) => acc + item.preco, 0)
+  }
+
   return (
     <S.Container className={active ? 'active' : ''}>
       <S.Overlay onClick={close} />
       <S.Sidebar>
         <ul>
-          <S.Item>
-            <img src={pizza} alt="" />
-            <div>
-              <S.Title>Pizza</S.Title>
-              <S.Price>R$XXX.XX</S.Price>
-            </div>
-            <button />
-          </S.Item>
-          <S.Item>
-            <img src={pizza} alt="" />
-            <div>
-              <S.Title>Pizza</S.Title>
-              <S.Price>R$XXX.XX</S.Price>
-            </div>
-            <button />
-          </S.Item>
+          {items.map((item) => (
+            <S.Item key={item.id}>
+              <img src={item.foto} alt={item.nome} />
+              <div>
+                <S.Title>{item.nome}</S.Title>
+                <S.Price>{getPlatePrice(item.preco)}</S.Price>
+              </div>
+              <button onClick={() => remove(item.id)} />
+            </S.Item>
+          ))}
         </ul>
         <S.Total>
-          Valor total <span>R$XXX.XX</span>
+          Valor total <span>{getPlatePrice(getTotal())}</span>
         </S.Total>
         <Button>Continuar com a entrega</Button>
       </S.Sidebar>

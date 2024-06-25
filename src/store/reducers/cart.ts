@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Plate } from '../../Pages/Home'
 
 type State = {
-  items: Plate[]
+  items: Plate['cardapio'][]
   active: boolean
 }
 
@@ -15,18 +15,29 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Plate>) => {
-      state.items.push(action.payload)
+    addToCart: (state, action: PayloadAction<Pick<Plate, 'cardapio'>>) => {
+      if (!state.items.some((item) => item.id === action.payload.cardapio.id)) {
+        state.items = [...state.items, action.payload.cardapio]
+      } else {
+        alert('O item ja foi adicionado ao carrinho')
+      }
     },
     openCart: (state) => {
       state.active = true
     },
     closeCart: (state) => {
       state.active = false
+    },
+    removeFromCart: (
+      state,
+      action: PayloadAction<Pick<Plate['cardapio'], 'id'>>
+    ) => {
+      state.items = state.items.filter((item) => item.id !== action.payload.id)
     }
   }
 })
 
-export const { addToCart, openCart, closeCart } = cartSlice.actions
+export const { addToCart, openCart, closeCart, removeFromCart } =
+  cartSlice.actions
 
 export default cartSlice.reducer

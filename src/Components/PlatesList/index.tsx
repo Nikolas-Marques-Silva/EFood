@@ -13,13 +13,7 @@ const ProductsList = ({ products }: Props) => {
         {Array.isArray(products) &&
           products.map((item) => (
             <li key={item.id}>
-              <Plates
-                title={item.nome}
-                image={item.foto}
-                description={item.descricao}
-                portion={item.porcao}
-                price={item.preco}
-              />
+              <Plates plate={item} />
             </li>
           ))}
       </Container>

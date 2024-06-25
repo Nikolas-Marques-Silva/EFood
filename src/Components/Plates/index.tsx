@@ -3,20 +3,17 @@ import { getDescription } from '../../Pages/Restaurants'
 import close from '../../assets/images/close.png'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../../store/reducers/cart'
+import { addToCart, openCart } from '../../store/reducers/cart'
+import { Plate } from '../../Pages/Home'
 
 type Props = {
-  title: string
-  image: string
-  description: string
-  portion: string
-  price: number
+  plate: Plate['cardapio']
 }
 
-const Plates = ({ title, image, description, portion, price }: Props) => {
+const Plates = ({ plate }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
-  function getPlatePrice(price: number) {
+  const getPlatePrice = (price: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL'
@@ -26,15 +23,16 @@ const Plates = ({ title, image, description, portion, price }: Props) => {
   const dispatch = useDispatch()
 
   const add = () => {
-    dispatch(addToCart())
+    dispatch(addToCart({ cardapio: plate }))
+    dispatch(openCart())
   }
 
   return (
     <>
       <S.Container>
-        <S.Image src={image} alt={title} />
-        <S.Title>{title}</S.Title>
-        <S.Description>{getDescription(description, 122)}</S.Description>
+        <S.Image src={plate.foto} alt={plate.nome} />
+        <S.Title>{plate.nome}</S.Title>
+        <S.Description>{getDescription(plate.descricao, 122)}</S.Description>
         <S.Button onClick={() => setModalIsOpen(true)}>Ver mais</S.Button>
       </S.Container>
       <S.Modal className={modalIsOpen ? 'visible' : ''}>
@@ -44,13 +42,13 @@ const Plates = ({ title, image, description, portion, price }: Props) => {
             src={close}
             alt="Fechar"
           />
-          <S.ModalImage src={image} alt={title} />
+          <S.ModalImage src={plate.foto} alt={plate.nome} />
           <S.ModalDetails>
-            <S.ModalTitle>{title}</S.ModalTitle>
-            <S.ModalDescription>{description}</S.ModalDescription>
-            <S.ModalPortion>Serve: {portion}</S.ModalPortion>
-            <S.ModalButton>
-              Adicionar ao carrinho - {getPlatePrice(price)}
+            <S.ModalTitle>{plate.nome}</S.ModalTitle>
+            <S.ModalDescription>{plate.descricao}</S.ModalDescription>
+            <S.ModalPortion>Serve: {plate.porcao}</S.ModalPortion>
+            <S.ModalButton onClick={add}>
+              Adicionar ao carrinho - {getPlatePrice(plate.preco)}
             </S.ModalButton>
           </S.ModalDetails>
         </S.ModalContent>
