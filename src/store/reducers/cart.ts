@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Plate } from '../../Pages/Home'
 
 type State = {
   items: Plate['cardapio'][]
