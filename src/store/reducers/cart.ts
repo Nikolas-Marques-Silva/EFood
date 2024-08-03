@@ -33,11 +33,14 @@ const cartSlice = createSlice({
       action: PayloadAction<Pick<Plate['cardapio'], 'id'>>
     ) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id)
+    },
+    clearCart: (state) => {
+      state.items = []
     }
   }
 })
 
-export const { addToCart, openCart, closeCart, removeFromCart } =
+export const { addToCart, openCart, closeCart, removeFromCart, clearCart } =
   cartSlice.actions
 
 export default cartSlice.reducer

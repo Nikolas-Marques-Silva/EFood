@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 import trash from '../../assets/images/lixeira.png'
 
+type InputProps = {
+  error?: string
+  maxwidth?: string
+}
+
 export const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -26,7 +31,7 @@ export const Container = styled.div`
   }
 `
 
-export const Sidebar = styled.aside`
+export const Sidebar = styled.form`
   background-color: ${colors.pink};
   max-width: 360px;
   width: 100%;
@@ -85,5 +90,70 @@ export const Item = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
+  }
+`
+
+export const Button = styled.button`
+  margin-bottom: 8px;
+  margin: 4px;
+  background-color: ${colors.lightPink};
+  color: ${colors.pink};
+  width: 100%;
+
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+`
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 34px;
+`
+
+export const InputGroup = styled.div<InputProps>`
+  width: 100%;
+  max-width: ${({ maxwidth }) => (maxwidth ? maxwidth : '100%')};
+
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    color: ${colors.white};
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid ${colors.pink};
+    background-color: ${colors.white};
+    color: ${colors.pink};
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0;
+    border: 2px solid ${colors.white};
+    outline: none;
+
+    &.error {
+      border: 3px solid red;
+    }
+  }
+`
+
+export const Empty = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: ${colors.white};
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    margin: 40px 0;
   }
 `

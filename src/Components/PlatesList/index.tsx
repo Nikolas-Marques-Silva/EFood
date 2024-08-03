@@ -1,6 +1,6 @@
-import { Container } from './styles'
 import Plates from '../Plates'
-import { Plate } from '../../Pages/Home'
+
+import { Container } from './styles'
 
 export type Props = {
   products: Plate['cardapio']

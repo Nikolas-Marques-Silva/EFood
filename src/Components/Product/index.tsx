@@ -1,8 +1,10 @@
-import Tag from '../Tag'
-import { TagContainer } from '../Tag/styles'
-import * as S from './styles'
 import estrela from '../../assets/images/estrela.png'
+import Tag from '../Tag'
+
+import { TagContainer } from '../Tag/styles'
 import { getDescription } from '../../Pages/Restaurants'
+
+import * as S from './styles'
 
 export type Props = {
   title: string

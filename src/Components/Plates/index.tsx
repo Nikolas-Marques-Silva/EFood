@@ -1,10 +1,12 @@
-import * as S from './styles'
-import { getDescription } from '../../Pages/Restaurants'
-import close from '../../assets/images/close.png'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+
+import close from '../../assets/images/close.png'
+
+import { getDescription } from '../../Pages/Restaurants'
 import { addToCart, openCart } from '../../store/reducers/cart'
-import { Plate } from '../../Pages/Home'
+
+import * as S from './styles'
 
 type Props = {
   plate: Plate['cardapio']

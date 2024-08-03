@@ -1,9 +1,12 @@
-import { Container, Logo } from '../../styles'
-import LogoImg from '../../assets/images/logo.png'
-import * as S from './styles'
-import { openCart } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
+
+import LogoImg from '../../assets/images/logo.png'
+
+import { openCart } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
+
+import { Container, Logo } from '../../styles'
+import * as S from './styles'
 
 const Header = () => {
   const dispatch = useDispatch()

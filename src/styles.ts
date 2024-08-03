@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 export const colors = {
   lightPink: '#ffebd9',
   pink: '#e66767',
-  bgWhite: 'fff2f8'
+  white: '#fff2f8'
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${colors.bgWhite};
+    background-color: ${colors.white};
   }
 
   .container {

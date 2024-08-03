@@ -1,8 +1,10 @@
+import { useParams } from 'react-router-dom'
+
 import Apresentation from '../../Components/Apresentation'
 import Footer from '../../Components/Footer'
 import Header from '../../Components/Header'
-import { useParams } from 'react-router-dom'
 import PlatesList from '../../Components/PlatesList'
+
 import { useGetPlatesQuery } from '../../services/api'
 
 export function getDescription(descricao: string, Length: number) {

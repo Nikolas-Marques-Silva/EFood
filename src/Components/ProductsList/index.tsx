@@ -1,6 +1,6 @@
 import Product from '../Product'
+
 import { Container } from './styles'
-import { Plate } from '../../Pages/Home'
 
 export type Props = {
   products: Plate[]
